@@ -170,7 +170,7 @@ func _setup_voronoi_pipeline():
 		if i > 0:
 			input_texture = _voronoi_buffers[i - 1].get_texture()
 		
-		buffer.set_size(get_viewport().size)
+		buffer.set_rt_size(get_viewport().size)
 		buffer.set_material(voronoi_mat.duplicate())
 		buffer.set_shader_parameter("u_level", i)
 		buffer.set_shader_parameter("u_max_steps", passes)
@@ -186,10 +186,10 @@ func _setup_voronoi_pipeline():
 func _setup_GI_pipeline():
 
 	# set up GI material size and uniforms.
-	$LastFrameBuffer.set_size(get_viewport().size)
+	$LastFrameBuffer.set_rt_size(get_viewport().size)
 	$LastFrameBuffer.set_shader_parameter("u_texture_to_draw", $GI.get_texture())
 	
-	$GI.set_size(get_viewport().size)	
+	$GI.set_rt_size(get_viewport().size)	
 	$GI.set_shader_parameter("u_resolution", get_viewport().size)
 	$GI.set_shader_parameter("u_distance_data", $DistanceField.get_texture())
 	$GI.set_shader_parameter("u_scene_colour_data", GI.colour_map.get_texture())

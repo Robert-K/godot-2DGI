@@ -24,7 +24,7 @@ func _ready():
 
 """ PUBLIC """
 
-func set_size(in_size):
+func set_rt_size(in_size):
 	size = in_size
 	$Texture2D.size = in_size
 	
