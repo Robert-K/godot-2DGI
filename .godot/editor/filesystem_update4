@@ -3,3 +3,5 @@ res://shaders/GI.gdshader
 res://src/Demo.gd
 res://src/RenderTarget.gd
 res://src/GI.gd
+res://scenes/GI.tscn
+res://scenes/RenderTarget.tscn

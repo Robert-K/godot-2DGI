@@ -7,7 +7,7 @@
 [ext_resource type="Shader" path="res://shaders/DrawTexture.gdshader" id="5"]
 [ext_resource type="Script" path="res://src/GI_Sprite.gd" id="6"]
 [ext_resource type="Script" path="res://src/Demo.gd" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/RenderTarget.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://ba0ny8a5mcfcf" path="res://scenes/RenderTarget.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://scenes/Ball.tscn" id="9"]
 [ext_resource type="Shader" path="res://shaders/VoronoiMultipass.gdshader" id="10"]
 [ext_resource type="Texture2D" uid="uid://iv4oy0t8sf35" path="res://assets/1px.png" id="11"]
@@ -453,9 +453,11 @@ text = "This is a tooltip!"
 
 [node name="SceneBuffer" type="SubViewport" parent="."]
 transparent_bg = true
+use_hdr_2d = true
 render_target_update_mode = 3
 
 [node name="VoronoiSeed" type="SubViewport" parent="."]
+use_hdr_2d = true
 render_target_update_mode = 3
 
 [node name="Texture2D" type="TextureRect" parent="VoronoiSeed"]
@@ -464,6 +466,7 @@ texture = ExtResource("11")
 expand_mode = 1
 
 [node name="DistanceField" type="SubViewport" parent="."]
+use_hdr_2d = true
 render_target_update_mode = 3
 
 [node name="Texture2D" type="TextureRect" parent="DistanceField"]
@@ -475,10 +478,12 @@ expand_mode = 1
 
 [node name="LastFrameBuffer" parent="." instance=ExtResource("8")]
 transparent_bg = true
+use_hdr_2d = true
 material = SubResource("6")
 
 [node name="GI" parent="." instance=ExtResource("8")]
 transparent_bg = true
+use_hdr_2d = true
 material = SubResource("7")
 
 [node name="MainScene" type="Node2D" parent="."]
