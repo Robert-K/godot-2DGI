@@ -1,8 +1,5 @@
 shader_type canvas_item;
 
-// constants
-uniform float PI = 3.141596;
-
 // uniforms
 uniform vec2 u_resolution = vec2(512.0, 512.0);
 uniform float u_rays_per_pixel = 32;
