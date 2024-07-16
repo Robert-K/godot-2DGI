@@ -123,7 +123,7 @@ func _process(delta):
 		else:
 			_light.position = get_global_mouse_position()
 				
-	$Screen/FPS.text = String(Engine.get_frames_per_second())
+	$Screen/FPS.text = str(Engine.get_frames_per_second())
 	
 	# drag functionality of the debug menu.
 	if _moving_debug:
@@ -212,12 +212,12 @@ func _on_DistanceField_pressed(): $Screen/Screen.get_material().set_shader_param
 
 func _on_RaysPerPixelSlider_value_changed(value):
 	$GI.set_shader_parameter("u_rays_per_pixel", value)
-	$Controls/Control/TabContainer/Params/RaysPerPixel/RaysPerPixel.text = String(value)
+	$Controls/Control/TabContainer/Params/RaysPerPixel/RaysPerPixel.text = str(value)
 	$Controls/Control/TabContainer/Params/RaysPerPixel/RaysPerPixelSlider.value = value
 
 func _on_MaxRaymarchStepsSlider_value_changed(value):
 	$GI.set_shader_parameter("u_max_raymarch_steps", value)
-	$Controls/Control/TabContainer/Params/MaxRaymarchSteps/MaxRaymarchSteps.text = String(value)
+	$Controls/Control/TabContainer/Params/MaxRaymarchSteps/MaxRaymarchSteps.text = str(value)
 	$Controls/Control/TabContainer/Params/MaxRaymarchSteps/MaxRaymarchStepsSlider.value = value
 	
 func _on_LightBounceButton_toggled(button_pressed):

@@ -1,2 +1,3 @@
 res://scenes/Demo.tscn
 res://shaders/GI.gdshader
+res://src/Demo.gd
