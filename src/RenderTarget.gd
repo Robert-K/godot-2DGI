@@ -1,4 +1,4 @@
-extends Viewport
+extends SubViewport
 class_name RenderTarget
 """
 """
@@ -9,7 +9,7 @@ class_name RenderTarget
 
 """ PRIVATE """
 
-export var material : Material = null
+@export var material : Material = null
 
 """ PUBLIC """
 
@@ -20,17 +20,17 @@ export var material : Material = null
 """ PRIVATE """
 
 func _ready():
-	$Texture.material = material
+	$Texture2D.material = material
 
 """ PUBLIC """
 
-func set_size(var in_size):
+func set_size(in_size):
 	size = in_size
-	$Texture.rect_size = in_size
+	$Texture2D.size = in_size
 	
 func set_material(mat):
 	material = mat
-	$Texture.material = material
+	$Texture2D.material = material
 	
-func set_shader_param(param, val):
-	$Texture.get_material().set_shader_param(param, val)
+func set_shader_parameter(param, val):
+	$Texture2D.get_material().set_shader_parameter(param, val)

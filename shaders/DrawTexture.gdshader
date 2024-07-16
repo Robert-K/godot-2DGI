@@ -1,7 +1,7 @@
 shader_type canvas_item;
 render_mode skip_vertex_transform;
 
-uniform sampler2D u_texture_to_draw : hint_black;
+uniform sampler2D u_texture_to_draw : hint_default_black;
 uniform bool u_sRGB = false;
 
 vec3 lin_to_srgb(vec3 color)

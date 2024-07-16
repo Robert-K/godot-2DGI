@@ -10,8 +10,8 @@ extends Node
 
 """ PUBLIC """
 
-var emissive_map : Viewport
-var colour_map : Viewport
+var emissive_map : SubViewport
+var colour_map : SubViewport
 
 ###########
 # METHODS #

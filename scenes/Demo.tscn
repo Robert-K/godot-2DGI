@@ -1,21 +1,21 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://shaders/GI.shader" type="Shader" id=1]
-[ext_resource path="res://shaders/LastFrameRender.shader" type="Shader" id=2]
-[ext_resource path="res://shaders/VoronoiSeed.shader" type="Shader" id=3]
-[ext_resource path="res://shaders/DistanceField.shader" type="Shader" id=4]
-[ext_resource path="res://shaders/DrawTexture.shader" type="Shader" id=5]
+[ext_resource path="res://shaders/GI.gdshader" type="Shader" id=1]
+[ext_resource path="res://shaders/LastFrameRender.gdshader" type="Shader" id=2]
+[ext_resource path="res://shaders/VoronoiSeed.gdshader" type="Shader" id=3]
+[ext_resource path="res://shaders/DistanceField.gdshader" type="Shader" id=4]
+[ext_resource path="res://shaders/DrawTexture.gdshader" type="Shader" id=5]
 [ext_resource path="res://src/GI_Sprite.gd" type="Script" id=6]
 [ext_resource path="res://src/Demo.gd" type="Script" id=7]
 [ext_resource path="res://scenes/RenderTarget.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Ball.tscn" type="PackedScene" id=9]
-[ext_resource path="res://shaders/VoronoiMultipass.shader" type="Shader" id=10]
-[ext_resource path="res://assets/1px.png" type="Texture" id=11]
-[ext_resource path="res://assets/circle.png" type="Texture" id=12]
-[ext_resource path="res://assets/noise.png" type="Texture" id=13]
-[ext_resource path="res://assets/move.png" type="Texture" id=14]
-[ext_resource path="res://assets/min.png" type="Texture" id=15]
-[ext_resource path="res://assets/info.png" type="Texture" id=16]
+[ext_resource path="res://shaders/VoronoiMultipass.gdshader" type="Shader" id=10]
+[ext_resource path="res://assets/1px.png" type="Texture2D" id=11]
+[ext_resource path="res://assets/circle.png" type="Texture2D" id=12]
+[ext_resource path="res://assets/noise.png" type="Texture2D" id=13]
+[ext_resource path="res://assets/move.png" type="Texture2D" id=14]
+[ext_resource path="res://assets/min.png" type="Texture2D" id=15]
+[ext_resource path="res://assets/info.png" type="Texture2D" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -78,9 +78,9 @@ __meta__ = {
 }
 
 [node name="FPS" type="Label" parent="Screen"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_colors/font_shadow_color = Color( 0, 0, 0, 1 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,20 +89,20 @@ __meta__ = {
 [node name="Controls" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="Controls"]
-margin_left = 632.0
-margin_top = 32.0
-margin_right = 672.0
-margin_bottom = 72.0
+offset_left = 632.0
+offset_top = 32.0
+offset_right = 672.0
+offset_bottom = 72.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TabContainer" type="TabContainer" parent="Controls/Control"]
-margin_right = 258.0
-margin_bottom = 268.0
+offset_right = 258.0
+offset_bottom = 268.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-tab_align = 0
+tab_alignment = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -110,38 +110,38 @@ __meta__ = {
 [node name="Params" type="VBoxContainer" parent="Controls/Control/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-rect_min_size = Vector2( 280, 0 )
+offset_left = 4.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = -4.0
+custom_minimum_size = Vector2( 280, 0 )
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RaysPerPixel" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_right = 280.0
-margin_bottom = 22.0
+offset_right = 280.0
+offset_bottom = 22.0
 size_flags_horizontal = 3
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/RaysPerPixel"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/RaysPerPixel"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 113.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 113.0
+offset_bottom = 18.0
 text = "Rays Per Pixel:"
 align = 2
 
 [node name="RaysPerPixelSlider" type="HSlider" parent="Controls/Control/TabContainer/Params/RaysPerPixel"]
-margin_left = 117.0
-margin_right = 260.0
-margin_bottom = 16.0
+offset_left = 117.0
+offset_right = 260.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 128.0
@@ -151,41 +151,41 @@ __meta__ = {
 }
 
 [node name="RaysPerPixel" type="Label" parent="Controls/Control/TabContainer/Params/RaysPerPixel"]
-margin_left = 264.0
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 18.0
+offset_left = 264.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 18.0
 text = "32"
 align = 2
 
 [node name="HSeparator10" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 26.0
-margin_right = 280.0
-margin_bottom = 30.0
+offset_top = 26.0
+offset_right = 280.0
+offset_bottom = 30.0
 
 [node name="MaxRaymarchSteps" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 34.0
-margin_right = 280.0
-margin_bottom = 56.0
+offset_top = 34.0
+offset_right = 280.0
+offset_bottom = 56.0
 size_flags_horizontal = 3
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/MaxRaymarchSteps"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/MaxRaymarchSteps"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 155.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 155.0
+offset_bottom = 18.0
 text = "Max Raymarch Steps:"
 align = 2
 
 [node name="MaxRaymarchStepsSlider" type="HSlider" parent="Controls/Control/TabContainer/Params/MaxRaymarchSteps"]
-margin_left = 159.0
-margin_right = 260.0
-margin_bottom = 16.0
+offset_left = 159.0
+offset_right = 260.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 128.0
@@ -195,41 +195,41 @@ __meta__ = {
 }
 
 [node name="MaxRaymarchSteps" type="Label" parent="Controls/Control/TabContainer/Params/MaxRaymarchSteps"]
-margin_left = 264.0
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 18.0
+offset_left = 264.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 18.0
 text = "32"
 align = 2
 
 [node name="HSeparator" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 60.0
-margin_right = 280.0
-margin_bottom = 64.0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 64.0
 
 [node name="DistanceMod" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 68.0
-margin_right = 280.0
-margin_bottom = 90.0
+offset_top = 68.0
+offset_right = 280.0
+offset_bottom = 90.0
 size_flags_horizontal = 3
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/DistanceMod"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/DistanceMod"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 112.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 112.0
+offset_bottom = 18.0
 text = "Distance Mod:"
 align = 2
 
 [node name="DistanceModSlider" type="HSlider" parent="Controls/Control/TabContainer/Params/DistanceMod"]
-margin_left = 116.0
-margin_right = 248.0
-margin_bottom = 16.0
+offset_left = 116.0
+offset_right = 248.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 50.0
@@ -240,41 +240,41 @@ __meta__ = {
 }
 
 [node name="DistanceMod" type="Label" parent="Controls/Control/TabContainer/Params/DistanceMod"]
-margin_left = 252.0
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 18.0
+offset_left = 252.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 18.0
 text = "10.0"
 align = 2
 
 [node name="HSeparator2" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 94.0
-margin_right = 280.0
-margin_bottom = 98.0
+offset_top = 94.0
+offset_right = 280.0
+offset_bottom = 98.0
 
 [node name="EmissionMulti" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 102.0
-margin_right = 280.0
-margin_bottom = 124.0
+offset_top = 102.0
+offset_right = 280.0
+offset_bottom = 124.0
 size_flags_horizontal = 3
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/EmissionMulti"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/EmissionMulti"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 119.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 119.0
+offset_bottom = 18.0
 text = "Emission Multi:"
 align = 2
 
 [node name="EmissionMultiSlider" type="HSlider" parent="Controls/Control/TabContainer/Params/EmissionMulti"]
-margin_left = 123.0
-margin_right = 256.0
-margin_bottom = 16.0
+offset_left = 123.0
+offset_right = 256.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 0.1
 max_value = 5.0
@@ -285,41 +285,41 @@ __meta__ = {
 }
 
 [node name="EmissionMulti" type="Label" parent="Controls/Control/TabContainer/Params/EmissionMulti"]
-margin_left = 260.0
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 18.0
+offset_left = 260.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 18.0
 text = "1.0"
 align = 2
 
 [node name="HSeparator3" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 128.0
-margin_right = 280.0
-margin_bottom = 132.0
+offset_top = 128.0
+offset_right = 280.0
+offset_bottom = 132.0
 
 [node name="EmissionRange" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 136.0
-margin_right = 280.0
-margin_bottom = 158.0
+offset_top = 136.0
+offset_right = 280.0
+offset_bottom = 158.0
 size_flags_horizontal = 3
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/EmissionRange"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/EmissionRange"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 124.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 124.0
+offset_bottom = 18.0
 text = "Emission Range:"
 align = 2
 
 [node name="EmissionRangeSlider" type="HSlider" parent="Controls/Control/TabContainer/Params/EmissionRange"]
-margin_left = 128.0
-margin_right = 256.0
-margin_bottom = 16.0
+offset_left = 128.0
+offset_right = 256.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 0.1
 max_value = 10.0
@@ -330,41 +330,41 @@ __meta__ = {
 }
 
 [node name="EmissionRange" type="Label" parent="Controls/Control/TabContainer/Params/EmissionRange"]
-margin_left = 260.0
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 18.0
+offset_left = 260.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 18.0
 text = "1.0"
 align = 2
 
 [node name="HSeparator4" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 162.0
-margin_right = 280.0
-margin_bottom = 166.0
+offset_top = 162.0
+offset_right = 280.0
+offset_bottom = 166.0
 
 [node name="EmissionDropoff" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 170.0
-margin_right = 280.0
-margin_bottom = 192.0
+offset_top = 170.0
+offset_right = 280.0
+offset_bottom = 192.0
 size_flags_horizontal = 3
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/EmissionDropoff"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/EmissionDropoff"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 138.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 138.0
+offset_bottom = 18.0
 text = "Emission Drop-off:"
 align = 2
 
 [node name="EmissionDropoffSlider" type="HSlider" parent="Controls/Control/TabContainer/Params/EmissionDropoff"]
-margin_left = 142.0
-margin_right = 256.0
-margin_bottom = 16.0
+offset_left = 142.0
+offset_right = 256.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 min_value = 0.1
 max_value = 5.0
@@ -375,316 +375,316 @@ __meta__ = {
 }
 
 [node name="EmissionDropoff" type="Label" parent="Controls/Control/TabContainer/Params/EmissionDropoff"]
-margin_left = 260.0
-margin_top = 4.0
-margin_right = 280.0
-margin_bottom = 18.0
+offset_left = 260.0
+offset_top = 4.0
+offset_right = 280.0
+offset_bottom = 18.0
 text = "1.0"
 align = 2
 
 [node name="HSeparator5" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 196.0
-margin_right = 280.0
-margin_bottom = 200.0
+offset_top = 196.0
+offset_right = 280.0
+offset_bottom = 200.0
 
 [node name="LightBounce" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 204.0
-margin_right = 280.0
-margin_bottom = 226.0
+offset_top = 204.0
+offset_right = 280.0
+offset_bottom = 226.0
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/LightBounce"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/LightBounce"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 107.0
-margin_bottom = 18.0
-text = "Light Bounce:"
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 107.0
+offset_bottom = 18.0
+text = "Light3D Bounce:"
 align = 2
 
 [node name="Container" type="Container" parent="Controls/Control/TabContainer/Params/LightBounce"]
-margin_left = 111.0
-margin_right = 280.0
-margin_bottom = 22.0
+offset_left = 111.0
+offset_right = 280.0
+offset_bottom = 22.0
 size_flags_horizontal = 3
 
 [node name="LightBounceButton" type="CheckButton" parent="Controls/Control/TabContainer/Params/LightBounce/Container"]
 anchor_right = 1.0
-margin_top = -13.0
-margin_bottom = 27.0
+offset_top = -13.0
+offset_bottom = 27.0
 focus_mode = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 pressed = true
-enabled_focus_mode = 0
+focus_mode = 0
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HSeparator6" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 230.0
-margin_right = 280.0
-margin_bottom = 234.0
+offset_top = 230.0
+offset_right = 280.0
+offset_bottom = 234.0
 
 [node name="De-Noise" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 238.0
-margin_right = 280.0
-margin_bottom = 260.0
+offset_top = 238.0
+offset_right = 280.0
+offset_bottom = 260.0
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/De-Noise"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/De-Noise"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 84.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 84.0
+offset_bottom = 18.0
 text = "De-Noise:"
 align = 2
 
 [node name="Container" type="Container" parent="Controls/Control/TabContainer/Params/De-Noise"]
-margin_left = 88.0
-margin_right = 280.0
-margin_bottom = 22.0
+offset_left = 88.0
+offset_right = 280.0
+offset_bottom = 22.0
 size_flags_horizontal = 3
 
 [node name="DeNoiseButton" type="CheckButton" parent="Controls/Control/TabContainer/Params/De-Noise/Container"]
 anchor_right = 1.0
-margin_top = -13.0
+offset_top = -13.0
 focus_mode = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-enabled_focus_mode = 0
+focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HSeparator7" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 264.0
-margin_right = 280.0
-margin_bottom = 268.0
+offset_top = 264.0
+offset_right = 280.0
+offset_bottom = 268.0
 
 [node name="Physics Freeze" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 272.0
-margin_right = 280.0
-margin_bottom = 294.0
+offset_top = 272.0
+offset_right = 280.0
+offset_bottom = 294.0
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/Physics Freeze"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/Physics Freeze"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 119.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 119.0
+offset_bottom = 18.0
 text = "Physics Freeze:"
 align = 2
 
 [node name="Container" type="Container" parent="Controls/Control/TabContainer/Params/Physics Freeze"]
-margin_left = 123.0
-margin_right = 280.0
-margin_bottom = 22.0
+offset_left = 123.0
+offset_right = 280.0
+offset_bottom = 22.0
 size_flags_horizontal = 3
 
 [node name="FreezeButton" type="CheckButton" parent="Controls/Control/TabContainer/Params/Physics Freeze/Container"]
 anchor_right = 1.0
-margin_top = -13.0
+offset_top = -13.0
 focus_mode = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-enabled_focus_mode = 0
+focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HSeparator8" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 298.0
-margin_right = 280.0
-margin_bottom = 302.0
+offset_top = 298.0
+offset_right = 280.0
+offset_bottom = 302.0
 
 [node name="MouseSpawn" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 306.0
-margin_right = 280.0
-margin_bottom = 328.0
+offset_top = 306.0
+offset_right = 280.0
+offset_bottom = 328.0
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/MouseSpawn"]
-margin_right = 16.0
-margin_bottom = 22.0
+offset_right = 16.0
+offset_bottom = 22.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/MouseSpawn"]
-margin_left = 20.0
-margin_top = 4.0
-margin_right = 146.0
-margin_bottom = 18.0
+offset_left = 20.0
+offset_top = 4.0
+offset_right = 146.0
+offset_bottom = 18.0
 text = "Mouse Spawn Balls:"
 align = 2
 
 [node name="Container" type="Container" parent="Controls/Control/TabContainer/Params/MouseSpawn"]
-margin_left = 150.0
-margin_right = 280.0
-margin_bottom = 22.0
+offset_left = 150.0
+offset_right = 280.0
+offset_bottom = 22.0
 size_flags_horizontal = 3
 
 [node name="MouseSpawnButton" type="CheckButton" parent="Controls/Control/TabContainer/Params/MouseSpawn/Container"]
 anchor_right = 1.0
-margin_top = -13.0
+offset_top = -13.0
 focus_mode = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-enabled_focus_mode = 0
+focus_mode = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HSeparator9" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
-margin_top = 332.0
-margin_right = 280.0
-margin_bottom = 336.0
+offset_top = 332.0
+offset_right = 280.0
+offset_bottom = 336.0
 
 [node name="Walls" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
-margin_top = 340.0
-margin_right = 280.0
-margin_bottom = 364.0
+offset_top = 340.0
+offset_right = 280.0
+offset_bottom = 364.0
 
 [node name="Info" type="Button" parent="Controls/Control/TabContainer/Params/Walls"]
-margin_right = 16.0
-margin_bottom = 24.0
+offset_right = 16.0
+offset_bottom = 24.0
 icon = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/Walls"]
-margin_left = 20.0
-margin_top = 5.0
-margin_right = 158.0
-margin_bottom = 19.0
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 158.0
+offset_bottom = 19.0
 size_flags_horizontal = 3
 text = "Walls:"
 
 [node name="A" type="Label" parent="Controls/Control/TabContainer/Params/Walls"]
-margin_left = 162.0
-margin_top = 5.0
-margin_right = 171.0
-margin_bottom = 19.0
+offset_left = 162.0
+offset_top = 5.0
+offset_right = 171.0
+offset_bottom = 19.0
 text = "A"
 align = 2
 
 [node name="WallColourCheck" type="CheckBox" parent="Controls/Control/TabContainer/Params/Walls"]
-margin_left = 175.0
-margin_right = 199.0
-margin_bottom = 24.0
+offset_left = 175.0
+offset_right = 199.0
+offset_bottom = 24.0
 pressed = true
 group = SubResource( 3 )
 
 [node name="B" type="Label" parent="Controls/Control/TabContainer/Params/Walls"]
-margin_left = 203.0
-margin_top = 5.0
-margin_right = 212.0
-margin_bottom = 19.0
+offset_left = 203.0
+offset_top = 5.0
+offset_right = 212.0
+offset_bottom = 19.0
 text = "B"
 align = 2
 
 [node name="WallWhiteCheck" type="CheckBox" parent="Controls/Control/TabContainer/Params/Walls"]
-margin_left = 216.0
-margin_right = 240.0
-margin_bottom = 24.0
+offset_left = 216.0
+offset_right = 240.0
+offset_bottom = 24.0
 group = SubResource( 3 )
 
 [node name="C" type="Label" parent="Controls/Control/TabContainer/Params/Walls"]
-margin_left = 244.0
-margin_top = 5.0
-margin_right = 252.0
-margin_bottom = 19.0
+offset_left = 244.0
+offset_top = 5.0
+offset_right = 252.0
+offset_bottom = 19.0
 text = "C"
 align = 2
 
 [node name="WallBlackCheck" type="CheckBox" parent="Controls/Control/TabContainer/Params/Walls"]
-margin_left = 256.0
-margin_right = 280.0
-margin_bottom = 24.0
+offset_left = 256.0
+offset_right = 280.0
+offset_bottom = 24.0
 group = SubResource( 3 )
 
 [node name="RTTs" type="VBoxContainer" parent="Controls/Control/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridContainer" type="GridContainer" parent="Controls/Control/TabContainer/RTTs"]
-margin_right = 254.0
-margin_bottom = 116.0
+offset_right = 254.0
+offset_bottom = 116.0
 
 [node name="Final" type="Button" parent="Controls/Control/TabContainer/RTTs/GridContainer"]
-margin_right = 96.0
-margin_bottom = 20.0
+offset_right = 96.0
+offset_bottom = 20.0
 text = "Final"
 
 [node name="Scene" type="Button" parent="Controls/Control/TabContainer/RTTs/GridContainer"]
-margin_left = 100.0
-margin_right = 175.0
-margin_bottom = 20.0
+offset_left = 100.0
+offset_right = 175.0
+offset_bottom = 20.0
 text = "Scene"
 
 [node name="Colour" type="Button" parent="Controls/Control/TabContainer/RTTs/GridContainer"]
-margin_left = 100.0
-margin_right = 175.0
-margin_bottom = 20.0
+offset_left = 100.0
+offset_right = 175.0
+offset_bottom = 20.0
 text = "Colour"
 
 [node name="Emissive" type="Button" parent="Controls/Control/TabContainer/RTTs/GridContainer"]
-margin_left = 179.0
-margin_right = 254.0
-margin_bottom = 20.0
+offset_left = 179.0
+offset_right = 254.0
+offset_bottom = 20.0
 text = "Emissive"
 
 [node name="VoronoiSeed" type="Button" parent="Controls/Control/TabContainer/RTTs/GridContainer"]
-margin_top = 24.0
-margin_right = 96.0
-margin_bottom = 44.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 44.0
 text = "Voronoi Seed"
 
 [node name="Voronoi" type="Button" parent="Controls/Control/TabContainer/RTTs/GridContainer"]
-margin_left = 100.0
-margin_top = 24.0
-margin_right = 175.0
-margin_bottom = 44.0
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 175.0
+offset_bottom = 44.0
 text = "Voronoi"
 
 [node name="DistanceField" type="Button" parent="Controls/Control/TabContainer/RTTs/GridContainer"]
-margin_left = 100.0
-margin_top = 96.0
-margin_right = 175.0
-margin_bottom = 116.0
+offset_left = 100.0
+offset_top = 96.0
+offset_right = 175.0
+offset_bottom = 116.0
 text = "Dist-Field"
 
 [node name="Minimise" type="Button" parent="Controls/Control"]
-margin_left = 231.0
-margin_top = -1.0
-margin_right = 259.0
-margin_bottom = 21.0
+offset_left = 231.0
+offset_top = -1.0
+offset_right = 259.0
+offset_bottom = 21.0
 icon = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Move" type="Button" parent="Controls/Control"]
-margin_left = 199.0
-margin_top = -1.0
-margin_right = 227.0
-margin_bottom = 21.0
+offset_left = 199.0
+offset_top = -1.0
+offset_right = 227.0
+offset_bottom = 21.0
 icon = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -693,43 +693,43 @@ __meta__ = {
 [node name="Tooltip" type="PanelContainer" parent="Controls"]
 visible = false
 anchor_right = 0.5
-margin_right = -56.0
-margin_bottom = 28.0
+offset_right = -56.0
+offset_bottom = 28.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Controls/Tooltip"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 207.0
-margin_bottom = 21.0
-rect_min_size = Vector2( 200, 0 )
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 207.0
+offset_bottom = 21.0
+custom_minimum_size = Vector2( 200, 0 )
 text = "This is a tooltip!"
 autowrap = true
 
-[node name="SceneBuffer" type="Viewport" parent="."]
+[node name="SceneBuffer" type="SubViewport" parent="."]
 transparent_bg = true
 render_target_v_flip = true
 render_target_update_mode = 3
 
-[node name="VoronoiSeed" type="Viewport" parent="."]
+[node name="VoronoiSeed" type="SubViewport" parent="."]
 render_target_v_flip = true
 render_target_update_mode = 3
 
-[node name="Texture" type="TextureRect" parent="VoronoiSeed"]
+[node name="Texture2D" type="TextureRect" parent="VoronoiSeed"]
 material = SubResource( 4 )
 texture = ExtResource( 11 )
 expand = true
 
-[node name="DistanceField" type="Viewport" parent="."]
+[node name="DistanceField" type="SubViewport" parent="."]
 render_target_v_flip = true
 render_target_update_mode = 3
 
-[node name="Texture" type="TextureRect" parent="DistanceField"]
+[node name="Texture2D" type="TextureRect" parent="DistanceField"]
 material = SubResource( 5 )
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource( 11 )
 expand = true
 
@@ -743,18 +743,18 @@ material = SubResource( 7 )
 
 [node name="MainScene" type="Node2D" parent="."]
 
-[node name="Light" type="Sprite" parent="MainScene"]
+[node name="Light3D" type="Sprite2D" parent="MainScene"]
 position = Vector2( 127, 56 )
 texture = ExtResource( 12 )
 script = ExtResource( 6 )
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Light"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Light3D"]
 texture = ExtResource( 12 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Light"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Light3D"]
 texture = ExtResource( 12 )
 
-[node name="Top" type="Sprite" parent="MainScene"]
+[node name="Top" type="Sprite2D" parent="MainScene"]
 position = Vector2( 477.88, 0 )
 scale = Vector2( 972.733, 16 )
 texture = ExtResource( 11 )
@@ -763,11 +763,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Top"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Top"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Top"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Top"]
 modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -776,7 +776,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Top/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Bottom" type="Sprite" parent="MainScene"]
+[node name="Bottom" type="Sprite2D" parent="MainScene"]
 position = Vector2( 484.021, 510.561 )
 scale = Vector2( 742.018, 16 )
 texture = ExtResource( 11 )
@@ -785,11 +785,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Bottom"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Bottom"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Bottom"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Bottom"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -798,7 +798,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Bottom/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Left" type="Sprite" parent="MainScene"]
+[node name="Left" type="Sprite2D" parent="MainScene"]
 position = Vector2( 0, 270.716 )
 scale = Vector2( 16, 541.431 )
 texture = ExtResource( 11 )
@@ -807,11 +807,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Left"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Left"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Left"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Left"]
 modulate = Color( 0, 0.505882, 1, 1 )
 texture = ExtResource( 11 )
 
@@ -820,7 +820,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Left/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Right" type="Sprite" parent="MainScene"]
+[node name="Right" type="Sprite2D" parent="MainScene"]
 position = Vector2( 960, 269.716 )
 scale = Vector2( 16, 541.431 )
 texture = ExtResource( 11 )
@@ -829,11 +829,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Right"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Right"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Right"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Right"]
 modulate = Color( 0.686275, 1, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -842,7 +842,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Right/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Slope1" type="Sprite" parent="MainScene"]
+[node name="Slope1" type="Sprite2D" parent="MainScene"]
 position = Vector2( 171.501, 124.923 )
 rotation = 0.275176
 scale = Vector2( 358.813, 9.16205 )
@@ -852,11 +852,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Slope1"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Slope1"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Slope1"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Slope1"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -865,7 +865,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Slope1/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Slope3" type="Sprite" parent="MainScene"]
+[node name="Slope3" type="Sprite2D" parent="MainScene"]
 position = Vector2( 574.668, 120.963 )
 rotation = 0.148636
 scale = Vector2( 275.819, 9.16205 )
@@ -875,11 +875,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Slope3"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Slope3"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Slope3"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Slope3"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -888,7 +888,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Slope3/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Slope2" type="Sprite" parent="MainScene"]
+[node name="Slope2" type="Sprite2D" parent="MainScene"]
 position = Vector2( 706.09, 225.548 )
 rotation = -0.19827
 scale = Vector2( 293.767, 9.16205 )
@@ -898,11 +898,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Slope2"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Slope2"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Slope2"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Slope2"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -911,7 +911,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Slope2/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Slope5" type="Sprite" parent="MainScene"]
+[node name="Slope5" type="Sprite2D" parent="MainScene"]
 position = Vector2( 241.207, 274.572 )
 rotation = 0.0214005
 scale = Vector2( 330.427, 9.16205 )
@@ -921,11 +921,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Slope5"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Slope5"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Slope5"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Slope5"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -934,7 +934,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Slope5/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Slope6" type="Sprite" parent="MainScene"]
+[node name="Slope6" type="Sprite2D" parent="MainScene"]
 position = Vector2( 473.866, 371.023 )
 rotation = 2.85222
 scale = Vector2( 168.726, 9.16205 )
@@ -944,11 +944,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Slope6"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Slope6"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Slope6"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Slope6"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -957,7 +957,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Slope6/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Slope8" type="Sprite" parent="MainScene"]
+[node name="Slope8" type="Sprite2D" parent="MainScene"]
 position = Vector2( 760.5, 382.543 )
 rotation = 3.48523
 scale = Vector2( 223.77, 9.16205 )
@@ -967,11 +967,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Slope8"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Slope8"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Slope8"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Slope8"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
@@ -980,7 +980,7 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainScene/Slope8/StaticBody2D"]
 shape = SubResource( 8 )
 
-[node name="Slope7" type="Sprite" parent="MainScene"]
+[node name="Slope7" type="Sprite2D" parent="MainScene"]
 position = Vector2( 159.709, 398.795 )
 rotation = 3.37109
 scale = Vector2( 319.743, 9.16205 )
@@ -990,11 +990,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="EmissiveSprite" type="Sprite" parent="MainScene/Slope7"]
+[node name="EmissiveSprite" type="Sprite2D" parent="MainScene/Slope7"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
-[node name="AlbedoSprite" type="Sprite" parent="MainScene/Slope7"]
+[node name="AlbedoSprite" type="Sprite2D" parent="MainScene/Slope7"]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 11 )
 
